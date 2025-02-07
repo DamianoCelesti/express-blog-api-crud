@@ -32,8 +32,6 @@ router.patch('/:id', function (req, res) {
     res.send('Modifica parziale del post numero ' + req.params.id);
 });
 // destroy
-router.delete('/:id', function (req, res) {
-    res.send('Eliminazione del post numero ' + req.params.id);
-});
+router.delete('/:id', postController.destroy);
 
 module.exports = router;

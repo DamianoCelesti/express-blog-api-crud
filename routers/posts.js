@@ -17,9 +17,8 @@ router.get('/', postController.index);
     
 
 // show
-router.get('/:id', function (req, res) {
-    res.send('Dettagli del post numero ' + req.params.id);
-});
+router.get('/:id', postController.show);
+
 // store
 router.post('/', function (req, res) {
     res.send('Creazione nuovo post');

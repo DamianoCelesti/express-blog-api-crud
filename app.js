@@ -12,7 +12,7 @@ const postsRouter = require('./routers/posts');
 app.use(express.static('public'));
 
 
-// body-parser
+// middleware per abilitare il parsing del JSON
 app.use(express.json());
 
 // definisco route per la homepage

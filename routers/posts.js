@@ -20,9 +20,7 @@ router.get('/', postController.index);
 router.get('/:id', postController.show);
 
 // store
-router.post('/', function (req, res) {
-    res.send('Creazione nuovo post');
-});
+router.post('/', postController.store);
 // update
 router.put('/:id', function (req, res) {
     res.send('Modifica del post numero ' + req.params.id);

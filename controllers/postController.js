@@ -39,10 +39,30 @@ function show(req, res) {
     // mi restituisce il post sotto forma di json
     res.json(post);
 }
-
+// store
 function store(req, res) {
-    console.log(req.body);
-    res.send('Creazione nuovo post');
+    //console.log(req.body);
+    // res.send('Creazione nuovo post');
+
+    // creo nuovo id incrementando dall ultimo id presente
+    const newId = posts[posts.length - 1].id + 1;
+
+    // creo nuovo blog
+    const nuovoPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+
+    // add nuovo post
+    posts.push(nuovoPost);
+    
+    
+    // risposta corretta del nuovo post 
+    res.status(201);
+    res.json(nuovoPost);
 }
 function update(req, res) {
     // copiamo la logica dell'update

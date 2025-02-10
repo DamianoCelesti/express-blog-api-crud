@@ -6,7 +6,8 @@ const app = express()
 const port = 3000
 // importo il router dei posts
 const postsRouter = require('./routers/posts');
-
+// importo il middleware delle gestione errori server
+const errorsHandler = require("./middlewares/errorsHandler");
 
 // imgs statiche
 app.use(express.static('public'));
@@ -22,6 +23,10 @@ app.get('/', (req, res) => { // parametri della funzione request(richiesta del c
 
 // utilizziamo la rotta dei posts andando a definire la parte iniziale delle rotte
 app.use("/posts", postsRouter)
+
+// utilizzo gestione errori server alla fine dopo le route
+
+app.use(errorsHandler)
 
 // avvia il server e lo mette in ascolto sulla porta
 app.listen(port, () => {

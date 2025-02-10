@@ -4,7 +4,8 @@ const posts = require('../data/posts');
 
 //index
 function index(req, res) {
-
+    // fake error per vedere se il middleware error funziona
+    // gotjgutjguti;
     // l array filtrato corrisponde a quello originale
     let filteredPost = posts;
     // controllo se tags è presente e non è vuoto

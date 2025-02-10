@@ -58,14 +58,43 @@ function store(req, res) {
 
     // add nuovo post
     posts.push(nuovoPost);
-    
-    
+
+
     // risposta corretta del nuovo post 
     res.status(201);
     res.json(nuovoPost);
 }
+
+// update
 function update(req, res) {
-    // copiamo la logica dell'update
+    // trasformo l id in numero
+    const id = parseInt(req.params.id);
+
+    // cerco il post tramite l id
+    const post = posts.find(post => post.id === id);
+
+    // controllo se il post esiste
+    if (!post) {
+        // se il post non esiste ritorno questo stato
+        res.status(404);
+
+        return res.json({
+            status: 404,
+            error: "Not Found",
+            message: "Post non trovato"
+        });
+    }
+
+    // oggetto modificato
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+
+    // restituiamo l'oggetto modificato
+    res.json(post);
+
 }
 
 // delete

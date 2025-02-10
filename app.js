@@ -12,6 +12,9 @@ const postsRouter = require('./routers/posts');
 app.use(express.static('public'));
 
 
+// body-parser
+app.use(express.json());
+
 // definisco route per la homepage
 app.get('/', (req, res) => { // parametri della funzione request(richiesta del client) response(risposta del server invia al client)
     res.send("Server del mio blog");

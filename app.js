@@ -7,7 +7,9 @@ const port = 3000
 // importo il router dei posts
 const postsRouter = require('./routers/posts');
 // importo il middleware delle gestione errori server
-const errorsHandler = require("./middlewares/errorsHandler");
+const errorsHandler = require('./middlewares/errorsHandler');
+// importo il middleware notfound 404
+const notFound = require('./middlewares/notFound')
 
 // imgs statiche
 app.use(express.static('public'));
@@ -26,7 +28,11 @@ app.use("/posts", postsRouter)
 
 // utilizzo gestione errori server alla fine dopo le route
 
-app.use(errorsHandler)
+app.use(errorsHandler);
+
+// utilizzo middleware di gestione not found 404
+
+app.use(notFound);
 
 // avvia il server e lo mette in ascolto sulla porta
 app.listen(port, () => {
